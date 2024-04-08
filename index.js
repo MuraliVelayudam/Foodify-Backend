@@ -10,7 +10,7 @@ mongoose
   .then(() => console.log(`Connected to mongoDB`))
   .catch((error) => console.log(error));
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is Running on Running on Port : ${port}`);
 });
