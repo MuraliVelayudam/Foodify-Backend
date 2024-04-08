@@ -1,5 +1,6 @@
 const Vendor = require("../model/vendorModel");
 const Firm = require("../model/firmModel");
+const handleDuplicateKeyError = require("../middlewares/error");
 
 const multer = require("multer");
 const path = require("path");
@@ -51,6 +52,10 @@ const addFirm = async (req, res) => {
       message: "New Firm is Added Successfully",
     });
   } catch (error) {
+    if (error.name === "MongoServerError" && error.code === 11000) {
+      return handleDuplicateKeyError(error, req, res);
+    }
+
     console.error(error);
     res.status(500).json({
       status: "Fail",

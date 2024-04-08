@@ -1,6 +1,7 @@
 const express = require("express");
 const verifyToken = require("../middlewares/tokenVerify");
 const { addFirm, deleteFirmById } = require("../controllers/firmController");
+
 const firmRoute = express.Router();
 
 firmRoute.post("/add_firm", verifyToken, addFirm);
