@@ -4,10 +4,12 @@ const vendorRoute = require("./routers/vendorRoute");
 const firmRoute = require("./routers/firmRoute");
 const productRoute = require("./routers/productRoute");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/api/vendor", vendorRoute);
 app.use("/api/firm", firmRoute);

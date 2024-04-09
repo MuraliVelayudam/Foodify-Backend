@@ -15,7 +15,7 @@ const vendorRegistration = async (req, res) => {
     if (vendorEmail) {
       return res
         .status(400)
-        .json({ status: "fail", message: "Vendor Already Exists" });
+        .json({ status: "fail", error: "Vendor Already Exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +36,7 @@ const vendorRegistration = async (req, res) => {
     console.log(error);
     res.status(400).json({
       status: "fail",
-      message: "Internal Error",
+      error: "Internal Error",
     });
   }
 };
